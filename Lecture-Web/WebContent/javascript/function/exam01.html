@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	
+	//선언적 함수, 함수 선언식
+	function testFunction() {
+		alert('call...')
+	}
+
+	function testFunction2(data) {
+		alert('data: ' + data)
+	}
+	
+	function testFunction3(data, data2) {
+		alert(`data: ${data}, data2: ${data2}`)
+	}
+	
+	function sum(a, b) {
+		return a + b
+	}
+	
+	//func()라는 이름이 사실 필요없게 되기때문에 -> temp으로만 접근가능해짐
+	var temp = function func() {
+		alert('call func()')
+	}
+	
+	//익명함수, 함수 표현식******************************중요
+	var func01 = function() {
+		alert('call func01()')
+	}
+	
+	//익명함수가 선언적 함수보다 우선순위 높음
+	var aaa = function() {
+		alert('익명함수 aaa호출')
+	}
+	
+	
+	function aaa() {
+		alert('선언적 함수 aaa호출...')
+	}
+	
+	
+	//let f = function testFunction(){  }과 아래 동일한 말
+	
+	function callbackFunction(f) {
+		f()
+	}
+	
+	/////함수호출부/////
+	
+	callbackFunction(function() {
+		alert('익명함수 호출...')
+	})
+	
+	callbackFunction(temp)
+	callbackFunction(testFunction)
+	
+
+	
+	aaa()
+	
+	func01()
+	
+	temp()
+	
+	let total = sum(10, 20)
+	alert('총합 : ' + total)
+	
+	testFunction() //함수오버로딩 지원 안함 그래서 함수 이름을 다르게 해줘야함 매개변수는 구분자가 될 수 없음
+	testFunction2(10)
+	testFunction3(4, 9)
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var a = 1
+	var b = -1
+	var c = 0
+	
+	// var d = ++a || (++b && ++c) //2,-1,0 ||뒤에는 안보니까 연산이 안돼서 그냥 원래값!
+	var d = (++b && ++c) || ++a // ++b가 0이라서 &&연산 뒤는 볼필요 없어서 c가 0 a=2
+
+	alert('a: '+ a + ' b: '+ b + ' c: ' + c)
+	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

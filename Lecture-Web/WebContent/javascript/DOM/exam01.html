@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script> //원도우 온로드 내에서만 명령해야 바디에 쓴 것들을 받아올 수 있다    
+//innerHTML은 <body> tag내를 추출하라는 의미 innerText는 markup lang빼고 추출
+	window.onload = function() {
+		alert('innerHTML : ' + document.body.innerHTML)
+		alert('innerText : ' + document.body.innerText)
+		
+		let tags = ''
+			tags += '<ul>'
+			tags += '       <li>red</li>'
+			tags += '       <li>green</li>'
+			tags += '       <li>blue</li>'
+			tags += '</ul>'
+			
+//					 		document.body.innerHTML = tags
+//markup lang글자로 인식		document.body.innerText = tags 
+		document.body.innerHTML += tags
+	}
+</script>
+</head>
+<body>
+	<h1>안녕하세요</h1>
+	Hello
+</body>
+</html>

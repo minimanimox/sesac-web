@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var a = 10
+	//alert(`a: ${a}`)
+	let b = 20
+	const c = 30 //const는 상수화
+	
+	alert(`a : ${ a }, b : ${ b }, c : ${ c }`)
+	
+	a = a + 50
+	b +=50
+	//c+= 50 //상수라서 대입금지 일어남
+	
+	alert(`a : ${ a }, b : ${ b }, c : ${ c }`)
+	
+	var a = 100
+	//let b = 200 // let은 재선언 금지 (원래 이게 java에서 정상인데 javascript에서만 예외)
+	alert(`a : ${ a }, b : ${ b }, c : ${ c }`)
+	
+	{
+		var temp = 1000
+		let lettemp = 2000
+		alert(`temp: ${temp}, lettemp: ${lettemp}`)
+		
+	}
+	// alert(`temp: ${temp}, lettemp: ${lettemp}`)
+</script>
+</head>
+<body>
+
+</body>
+</html>
