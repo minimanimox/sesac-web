@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function() {
+		
+		let idTag = document.getElementById("id")
+		idTag.parentNode.removeChild(idTag)
+		
+		//console.log(idTag) 콘솔로 항상 확인해보기
+		//idTag.remove() //explorer에서는 안먹히는 명령어
+		
+		pwdTag = document.getElementById('pwd')
+		// <td id="pwd" syle = "color:orange"?>패스워드</td>
+		pwdTag.style.color = 'orange'
+		pwdTag.style.fontSize = '16pt' //font-size 안쓰고 fontSize
+		pwdTag.style.backgroundColor = 'grey'
+		pwdTag.style['border-style'] = 'dashed'   //css의 원래 속성명 []안에 쓸 수 있다
+		pwdTag.style['border-color'] = 'red'
+		pwdTag.sytle['border-width'] = '3px'
+	}
+
+</script>
+
+</head>
+<body>
+	<table border = "1" style="width:100px; height:100px;">
+		<tr>
+			<td id="id">아이디</td>
+		</tr>
+		<tr>
+			<td id="pwd">패스워드</td>
+		</tr>
+	</table>
+</body>
+</html>
