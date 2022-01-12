@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#monitor {
+		txt-align = right
+	}
+</style>
+<script>
+	function clickBtn(obj) {     //obj가 버튼들을 의미   (아래 this 대신 1,2,3 값 넣어도 됨)
+		let data = obj.value                //태그에서 값 뽑아내기위해서 .value라고 씀
+		
+		let monitor = document.getElementById("monitor")
+		
+		if(data == 'clear') {
+			monitor.value = ''
+		} else if (date == '-' {
+			monitor.value = eval(monitor.value)
+		} else {
+			monitor.value += data
+		}
+	}
+</script>
+</head>
+<body>
+	<input type = "text" id="monitor"><br>
+	<input type = "button" value="1" onclick="clickBtn(this)">    <!-- 여기서 this.value로 날려도됨 -->
+	<input type = "button" value="2" onclick="clickBtn(this)">
+	<input type = "button" value="3" onclick="clickBtn(this)">
+	<input type = "button" value="4" onclick="clickBtn(this)">
+	<input type = "button" value="5" onclick="clickBtn(this)">
+	<input type = "button" value="+" onclick="clickBtn(this)">
+	<input type = "button" value="-" onclick="clickBtn(this)">
+	<input type = "button" value="*" onclick="clickBtn(this)">
+	<input type = "button" value="=" onclick="clickBtn(this)">
+	<input type = "button" value="clear" onclick="clickBtn(this)">
+	
+</body>
+</html>

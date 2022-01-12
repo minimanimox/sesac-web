@@ -2,9 +2,91 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>미니마니모 계산기</title>
+<style>
+	table {
+		background-color: lightgrey
+	}
+		
+	input {
+		text-align: right;
+		padding: 4px 14px;
+	}	
+	button {
+		border-radius:5px;
+		padding:3px 14px;
+		background: linear-gradient(white, grey);
+	    opacity: 0.6;
+  		transition: 0.3s;
+    }
+    
+    button:hover {opacity: 1}
+    
+	.equal {
+		width: 100%
+	}
+    
+
+</style>
+<script>
+	function clickBtn(obj) {
+		let data = obj.value
+		
+		let screen = document.getElementById("screen")
+		
+		if(data == 'clear') {
+			screen.value = ''
+		} else if (data == '=') {
+			screen.value = eval(screen.value)
+		} else if (data == '%') {
+			screen.value = point(screen.value)
+		} else {
+			screen.value += data
+		}
+		
+	}
+
+	
+
+</script>
 </head>
 <body>
 
+    <table border="1">
+    
+    <tr><td colspan="4"><input type = "text" id="screen">
+    </td></tr>
+   
+	 
+    <tr>
+        <td><button value="7" onclick="clickBtn(this)">7</button></td> 
+		<td><button value="8" onclick="clickBtn(this)">8</button></td>
+	    <td><button value="9" onclick="clickBtn(this)">9</button></td> 
+		<td><button value="/" onclick="clickBtn(this)">/</button></td>
+	</tr>
+	<tr>
+		<td><button value="6" onclick="clickBtn(this)">6</button></td> 
+		<td><button value="5" onclick="clickBtn(this)">5</button></td>
+	    <td><button value="4" onclick="clickBtn(this)">4</button></td> 
+		<td><button value="*" onclick="clickBtn(this)">*</button></td>
+	</tr>
+	<tr>
+		<td><button value="3" onclick="clickBtn(this)">3</button></td> 
+		<td><button value="2" onclick="clickBtn(this)">2</button></td>
+	    <td><button value="1" onclick="clickBtn(this)">1</button></td> 
+		<td><button value="-" onclick="clickBtn(this)">-</button></td>
+	</tr>
+	<tr>
+		<td><button value="0" onclick="clickBtn(this)">0</button></td> 
+		<td><button value="." onclick="clickBtn(this)">.</button></td>
+	    <td><button value="+" onclick="clickBtn(this)">+</button></td> 
+		<td><button id="percent" value="%" onclick="clickBtn(this)">%</button></td>
+	</tr>
+   	<tr>
+        <td colspan="2"><button class="equal" value="=" onclick="clickBtn(this)">=</button></td> 
+		<td colspan="2"><button class="equal" value="clear" onclick="clickBtn(this)">clear</button></td>
+   	</tr>
+
+	</table>
 </body>
 </html>
