@@ -1,9 +1,9 @@
 <%@page import="kr.co.mlec.util.JDBCClose"%>
 <%@page import="kr.co.mlec.util.ConnectionFactory"%>
 <%@page import="java.sql.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
 	Connection conn = new ConnectionFactory().getConnection();
@@ -19,11 +19,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 목록</title>
-<style>
-	hr, table {
-		width: 80%
-	}
-</style>
+<link rel= "stylesheet" href= "/Mission-Web/css/layout.css">
+<link rel= "stylesheet" href= "/Mission-Web/css/board.css">
+
 <script>
 	function goRegisterForm() {
 		location.href="registerForm.jsp"
@@ -32,24 +30,26 @@
 </script>
 </head>
 <body>
+	<header>
+		<jsp:include page="/jsp/include/topMenu.jsp" />
+	</header>
+	<section>
+	
+	
 	<div align="center">
 		<hr>
 		<h1>회원 목록</h1>
 		<hr>
 		<br>
-		<table border = "1">
+		<table border = "1" class="list">
 			<tr>
 				<th>ID</th>
 				<th>NAME</th>
 				<th>PASSWORD</th>
-				<th>EMAIL_ID</th>
-				<th>EMAIL_DOMAIN</th>
-				<th>Tel1</th>
-				<th>Tel2</th>
-				<th>Tel3</th>
+				<th>EMAIL</th>
+				<th>TELEPHONE</th>
 				<th>POST</th>
-				<th>BASIC_ADDR</th>
-				<th>DETAIL_ADDR</th>
+				<th>ADDRESS</th>
 				<th>TYPE</th>
 				<th>REG_DATE</th>
 			</tr>
@@ -74,14 +74,10 @@
 					<td><%= id %></td>					
                     <td><%= name %></td>
                     <td><%= password %></td>
-                    <td><%= email_id %></td>
-                    <td><%= email_domain %></td>					
-                    <td><%= tel1 %></td>
-                    <td><%= tel2 %></td>
-                    <td><%= tel3 %></td>
-                    <td><%= post %></td>					
-                    <td><%= basic_addr %></td>
-                    <td><%= detail_addr %></td>
+                    <td><%= email_id %>@<%= email_domain %></td>
+                    <td><%= tel1 %>-<%= tel2 %>-<%= tel3 %></td>
+                    <td><%= post %></td>
+                    <td><%= basic_addr %><%= detail_addr %></td>
                     <td><%= type %></td>
                     <td><%= regDate %></td>
 				</tr>
@@ -94,6 +90,10 @@
 			
 	
 	</div>
+	</section>
+	<footer>
+	<%@ include file="/jsp/include/footer.jsp" %>
+	</footer>
 </body>
 </html>
 <%

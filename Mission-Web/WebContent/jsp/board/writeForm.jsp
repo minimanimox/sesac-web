@@ -5,11 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>글 등록 페이지</title>
-<style>
-hr, table {
-   width: 80%
-}
-</style>
+
 <script>
    function doWrite() {
 

@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원가입 페이지</title>
+<link rel="stylesheet" href="/Mission-Web/css/layout.css">
+<link rel="stylesheet" href="/Mission-Web/css/board.css">
 <style>
   
   document.write(str.fontsize(9))
 
 	hr, table {
 		width: 60%
-		
-
 	}
 	th {
 		width: 30%
@@ -69,8 +70,24 @@
 					<td><input type="text" name="email_id"></td>
 				</tr>
 				<tr>
+				<th>도메인 선택<th>
+				<select id="domain">
+				                  
+                                    <option>도메인 선택</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    
+                               </select>
+                        
+                      
+                        </tr>
+				<tr>
 					<th>email domain입력</th>
-					<td><input type="text" name="email_domain"></td>
+					
+					<td><input type="select" name="email_domain"></td>
+					
 				</tr>
 				<tr>
 					<th>휴대폰번호 앞자리 입력(010~019)</th>

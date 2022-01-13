@@ -5,7 +5,7 @@
 <title>미니마니모 계산기</title>
 <style>
 	table {
-		background-color: lightgrey
+		background: lightgrey;
 	}
 		
 	input {
@@ -39,7 +39,7 @@
 		} else if (data == '=') {
 			screen.value = eval(screen.value)
 		} else if (data == '%') {
-			screen.value = point(screen.value)
+			screen.value = (screen.value)*0.01
 		} else {
 			screen.value += data
 		}
