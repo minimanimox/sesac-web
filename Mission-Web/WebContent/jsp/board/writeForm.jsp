@@ -41,6 +41,7 @@
       <br>
       <form action="write.jsp" method="post" name="inputForm"
          onsubmit="return doWrite()">
+         <input type="hidden" name="writer" value="${ userVO.id }">
          <table border="1">
             <tr>
                <th width="23%">제목</th>
@@ -48,7 +49,9 @@
             </tr>
             <tr>
                <th>글쓴이</th>
-               <td><input type="text" name="writer"></td>
+               <td>${ userVO.id }
+               <!--  <input type="text" name="writer"> -->
+               </td>
             </tr>
             <tr>
                <th>내용</th>

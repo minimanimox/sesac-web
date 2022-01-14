@@ -9,11 +9,12 @@
 <%
    /* tbl_board에서 전체게시글(번호, 제목, 작성자, 등록일) 조회 */
 	
+    
     BoardDAO dao = new BoardDAO();
 	List<BoardVO> list = dao.selectAllBoard();
 	
-    pageContext.setAttribute("list", list);
-   
+	pageContext.setAttribute("list", list);
+	
 %>
 
 <!DOCTYPE html>
@@ -25,8 +26,24 @@
 <link rel = "stylesheet" href="/Mission-Web/css/board.css" >
 
 <script type="text/javascript">
+	
+     
    function goWriteForm(){
       location.href = "writeForm.jsp"
+   }
+   
+   function doAction(boardNo){
+	   <c:choose>
+	   		<c:when test="${ not empty userVO }">
+	   			location.href = "detail.jsp?no=" + boardNo
+	   					
+			</c:when>
+	   		<c:otherwise>
+	   			if(confirm('로그인 서비스가 필요합니다\n로그인페이지로 이동하시겠습니까?')){
+	   				location.href = '/Mission-Web/jsp/login/loginForm.jsp'
+	   			}	
+	   		</c:otherwise>
+   	   </c:choose>
    }
 </script>
 </head>
@@ -45,6 +62,7 @@
             <th width="7%">번호</th>
             <th>제목</th>
             <th width = "16%">글쓴이</th>
+            <th width = "10%">조회수</th>
             <th width = "20%">등록일</th>
          </tr>
 		 
@@ -52,17 +70,24 @@
 		 <tr>
 		 	<td>${ board.no }</td>
 		 	<td>
-		 		<a href="detail.jsp?no=${ board.no }">
-		 		<c:out value="${ board.title }" />
+		 		<a href="javascript:doAction(${ board.no })">
+		 			<c:out value="${ board.title }" />
 		 		</a>
+		 		
+		 		<%-- <a href="detail.jsp?no=${ board.no }">
+		 			<c:out value="${ board.title }" />
+		 		</a> --%>
 		 	</td>
 		 	<td>${ board.writer }</td>
+		 	<td>${ board.viewCnt }</td>
 		 	<td>${ board.regDate }</td>
 		 </tr>
 		</c:forEach>
       </table>
       <br>
+      <c:if test="${ not empty userVO }">
       <button onclick="goWriteForm()">새글등록</button>
+      </c:if>
    </div>	
 	</section> 	
 	<footer>

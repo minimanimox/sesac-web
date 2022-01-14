@@ -31,7 +31,7 @@ public class BoardDAO {
 		try {
 		   conn = new ConnectionFactory().getConnection();
 		   StringBuilder sql = new StringBuilder();
-		   sql.append("select no, title, writer, to_char(reg_date, 'yyyy-mm-dd') as reg_date ");
+		   sql.append("select no, title, writer, view_cnt, to_char(reg_date, 'yyyy-mm-dd') as reg_date ");
 		   sql.append(" from tbl_board ");
 		   sql.append(" order by no desc ");
 		   pstmt = conn.prepareStatement(sql.toString());
@@ -41,8 +41,9 @@ public class BoardDAO {
 			   int no = rs.getInt("no");
 			   String title = rs.getString("title");
 			   String writer = rs.getString("writer");
+			   int viewCnt = rs.getInt("view_cnt");
 			   String regDate = rs.getString("reg_date");
-			   BoardVO board = new BoardVO(no, title, writer, regDate);
+			   BoardVO board = new BoardVO(no, title, writer, viewCnt, regDate);
 			 //  System.out.println(board);
 			   
 			   list.add(board);
@@ -157,5 +158,32 @@ public void updateBoard(BoardVO board) {
 	
 
 }
-			
+
+/**
+ * 조회수 업데이트
+ */
+public void updateCnt(int boardNo) {
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+
+	
+    try {
+    	conn = new ConnectionFactory().getConnection();
+    	StringBuilder sql = new StringBuilder();
+    	sql.append("update tbl_board set view_cnt = view_cnt+1 ");
+    	sql.append(" where no = ? ");
+    	
+    	pstmt =conn.prepareStatement(sql.toString());
+    	pstmt.setInt(1, boardNo);
+    	
+    	pstmt.executeUpdate();
+    	
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+    	JDBCClose.close(pstmt, conn);
+    }
+    
 }
+}
+    

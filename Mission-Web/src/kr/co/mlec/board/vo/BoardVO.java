@@ -10,13 +10,7 @@ public class BoardVO {
 	private String regDate;
 	public BoardVO() {
 	}
-	public BoardVO(int no, String title, String writer, String regDate) {
-		super();
-		this.no = no;
-		this.title = title;
-		this.writer = writer;
-		this.regDate = regDate;
-	}
+	
 	
 	public BoardVO(int no, String title, String writer, String content, int viewCnt, String regDate) {
 		super();
@@ -25,6 +19,34 @@ public class BoardVO {
 		this.writer = writer;
 		this.content = content;
 		this.viewCnt = viewCnt;
+		this.regDate = regDate;
+	}
+
+	public BoardVO(int no, String title, String writer, String content) {
+		super();
+		this.no = no;
+		this.title = title;
+		this.writer = writer;
+		this.content = content;
+	}
+
+
+
+	public BoardVO(int no, String title, String writer, int viewCnt, String regDate) {
+		super();
+		this.no = no;
+		this.title = title;
+		this.writer = writer;
+		this.viewCnt = viewCnt;
+		this.regDate = regDate;
+	}
+	
+	public BoardVO(int no, String title, String writer, String content, String regDate) {
+		super();
+		this.no = no;
+		this.title = title;
+		this.writer = writer;
+		this.content = content;
 		this.regDate = regDate;
 	}
 	public int getNo() {
