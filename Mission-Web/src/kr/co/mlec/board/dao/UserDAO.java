@@ -24,7 +24,7 @@ public class UserDAO {
 		try {
 			conn = new ConnectionFactory().getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("update tbl_member ");
+			sql.append("insert into tbl_member ");
 			sql.append(" set id = ?, name = ?, password = ?, ");
 			sql.append(" set email_id = ?, email_domain = ?, ");
 			sql.append(" set tel1 = ?, tel2 = ?, tel3 = ?, ");

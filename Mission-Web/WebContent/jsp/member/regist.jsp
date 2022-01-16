@@ -48,9 +48,9 @@
 
 	  Connection conn = new ConnectionFactory().getConnection();
 	  StringBuilder sql = new StringBuilder();
-	  sql.append("insert into tbl_board(id, password, name, email_id, email_domain, ");
-	  sql.append(" tel1, tel2, tel3, post, basic_addr, detail_addr )");
-	  sql.append(" values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
+	  sql.append("insert into tbl_member(id, password, name, email_id, email_domain, ");
+	  sql.append(" tel1, tel2, tel3, post, basic_addr, detail_addr, type )");
+	  sql.append(" values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'U') ");
 	  PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 	  pstmt.setString(1, id);
 	  pstmt.setString(2, password);
