@@ -1,7 +1,6 @@
 <%@page import="kr.co.mlec.util.ConnectionFactory"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*"%>
 
 
 <%
@@ -19,6 +18,21 @@
 	String post= request.getParameter("post");
 	String basic_addr= request.getParameter("basic_addr");
 	String detail_addr= request.getParameter("detail_addr");
+	
+	//객체초기화
+	UserVO userVO = new UserVO();
+	userVO.setId(id);
+	userVO.setPassword(password);
+	userVO.setName(name);
+	userVO.setEmailId(email_id);
+	userVO.setEmailDomain(email_domain);
+	userVO.setTel1(tel1);
+	userVO.setTel2(tel2);
+	userVO.setTel3(tel3);
+	userVO.setPost(post);
+	userVO.setBasicAddr(basic_addr);
+	userVO.setDetailAddr(detail_addr);
+	
 	
 	System.out.println("id : "+id);
 	System.out.println("password : "+password);

@@ -45,6 +45,9 @@
 </script>
 </head>
 <body>
+	<header>
+		<jsp:include page="/jsp/include/topMenu.jsp" />
+	</header>
 	<div align="center">
 		<hr>
 		<h2>회원가입</h2>
@@ -69,7 +72,6 @@
 					<th>email id입력</th>
 					<td><input type="text" name="email_id"></td>
 				</tr>
-				<tr>
 				<th>도메인 선택<th>
 				<select id="domain">
 				                  
