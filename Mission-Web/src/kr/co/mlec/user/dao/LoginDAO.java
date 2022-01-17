@@ -1,10 +1,10 @@
-package kr.co.mlec.board.dao;
+package kr.co.mlec.user.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import kr.co.mlec.board.vo.LoginVO;
+import kr.co.mlec.user.vo.LoginVO;
 import kr.co.mlec.util.ConnectionFactory;
 
 //원래 memberdao에 넣어주면 되는데 이번에만 헷갈릴까봐 따로 만듦

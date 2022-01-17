@@ -24,9 +24,14 @@
 <title>Insert title here</title>
 <link rel = "stylesheet" href="/Mission-Web/css/layout.css" >
 <link rel = "stylesheet" href="/Mission-Web/css/board.css" >
-
+<script src="/Mission-Web/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	
+	$(document).ready(function() {
+		$('button').click(function() {
+			location.href = "writeForm.jsp"
+		})
+	})
      
    function goWriteForm(){
       location.href = "writeForm.jsp"
@@ -86,7 +91,8 @@
       </table>
       <br>
       <c:if test="${ not empty userVO }">
-      <button onclick="goWriteForm()">새글등록</button>
+      <!-- <button onclick="goWriteForm()">새글등록</button> -->
+      <button>새글등록</button>
       </c:if>
    </div>	
 	</section> 	

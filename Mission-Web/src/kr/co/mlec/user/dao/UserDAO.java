@@ -1,4 +1,4 @@
-package kr.co.mlec.board.dao;
+package kr.co.mlec.user.dao;
 
 import kr.co.mlec.board.vo.BoardVO;
 import kr.co.mlec.util.ConnectionFactory;

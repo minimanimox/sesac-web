@@ -1,5 +1,5 @@
-<%@page import="kr.co.mlec.board.vo.LoginVO"%>
-<%@page import="kr.co.mlec.board.dao.LoginDAO"%>
+<%@page import="kr.co.mlec.user.vo.LoginVO"%>
+<%@page import="kr.co.mlec.user.dao.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%

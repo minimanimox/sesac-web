@@ -1,4 +1,4 @@
-package kr.co.mlec.board.vo;
+package kr.co.mlec.user.vo;
 
 public class UserVO {
 
@@ -14,11 +14,10 @@ public class UserVO {
 	private String basicAddr;
 	private String detailAddr;
 	private String type;
-	private String regDate;
 	public UserVO() {
 	}
 	public UserVO(String id, String name, String password, String emailId, String emailDomain, int tel1, int tel2,
-			int tel3, int post, String basicAddr, String detailAddr, String type, String regDate) {
+			int tel3, int post, String basicAddr, String detailAddr, String type) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -32,7 +31,6 @@ public class UserVO {
 		this.basicAddr = basicAddr;
 		this.detailAddr = detailAddr;
 		this.type = type;
-		this.regDate = regDate;
 	}
 	public String getId() {
 		return id;
@@ -106,18 +104,12 @@ public class UserVO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getRegDate() {
-		return regDate;
-	}
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
-	}
+
 	@Override
 	public String toString() {
 		return "MemberVO [id=" + id + ", name=" + name + ", password=" + password + ", emailId=" + emailId
 				+ ", emailDomain=" + emailDomain + ", tel1=" + tel1 + ", tel2=" + tel2 + ", tel3=" + tel3 + ", post="
-				+ post + ", basicAddr=" + basicAddr + ", detailAddr=" + detailAddr + ", type=" + type + ", regDate="
-				+ regDate + "]";
+				+ post + ", basicAddr=" + basicAddr + ", detailAddr=" + detailAddr + ", type=" + type + " ]";
 	}
 	
 	

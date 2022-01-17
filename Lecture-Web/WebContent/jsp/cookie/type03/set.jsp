@@ -3,26 +3,27 @@
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
-	
+
 	String cName = request.getParameter("cName");
 	String cValue = request.getParameter("cValue");
 	String cAge = request.getParameter("cAge");
-	//인코딩
-	cName= URLEncoder.encode(cName, "utf-8");
-	cValue= URLEncoder.encode(cValue, "utf-8");
 	
-	//쿠키생성
+	// encoding
+	cName = URLEncoder.encode(cName, "utf-8");
+	cValue = URLEncoder.encode(cValue, "utf-8");
+	
+	// 쿠키생성
 	Cookie cookie = new Cookie(cName, cValue);
 	
-	//유효시간 설정
-	if(cAge != null && cAge.trim().length() !=0) {
+	// 유효시간 설정
+	if(cAge != null && cAge.trim().length() != 0) {
 		int age = Integer.parseInt(cAge);
-		cookie.setMaxAge(age *60);
+		cookie.setMaxAge(age * 60);
 	}
-	//쿠키전송
-	response.addCookie(cookie);
 	
-%>
+	// 쿠키전송
+	response.addCookie(cookie);
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,3 +36,6 @@
 	<a href="get.jsp">설정된 쿠키정보 보기</a>
 </body>
 </html>
+
+
+

@@ -3,21 +3,20 @@
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
-	
+
 	String cName = request.getParameter("cName");
 	String cValue = request.getParameter("cValue");
 	
-	//인코딩
-	cName= URLEncoder.encode(cName, "utf-8");
-	cValue= URLEncoder.encode(cValue, "utf-8");
+	// encoding
+	cName = URLEncoder.encode(cName, "utf-8");
+	cValue = URLEncoder.encode(cValue, "utf-8");
 	
-	//쿠키생성
+	// 쿠키생성
 	Cookie cookie = new Cookie(cName, cValue);
 	
-	//쿠키전송
+	// 쿠키전송
 	response.addCookie(cookie);
-	
-%>
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,3 +29,6 @@
 	<a href="get.jsp">설정된 쿠키정보 보기</a>
 </body>
 </html>
+
+
+

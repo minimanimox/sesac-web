@@ -1,4 +1,4 @@
-package kr.co.mlec.board.vo;
+package kr.co.mlec.user.vo;
 
 public class LoginVO {
 
