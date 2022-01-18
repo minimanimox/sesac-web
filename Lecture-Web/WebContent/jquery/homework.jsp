@@ -9,8 +9,8 @@
 
 		
 	p {
-      width: 100px;
-      height: 100px;
+      width: 50px;
+      height: 50px;
       padding : 2%;
       float : left;
 	
@@ -93,15 +93,22 @@
 				$('#fri').mouseleave(function() {
 					'width': '100px',
 					'height' : '100px'
-				}))
-			}, function() {
+				})}
+			
+			
+			function() {
 				$('#f').text('금요일')
 				
 			})
 			
 		}) 
 		
-		$('#sat').mouseenter(function() {
+		$('#sat').animate(function() {  
+			$(this).mouseenter()
+			$(this).mouseleave()
+		
+		})
+		mouseenter(function() {
 			$(this).animate({
 				'width': '200px',
 				'height' : '200px'
