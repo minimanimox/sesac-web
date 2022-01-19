@@ -28,7 +28,7 @@ $(document).ready(function(){
          url : 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json',
          type: 'get',
          data: {
-            key : '***',
+            key : '45abe6dbaa94f3d96e63baa328111212',
             targetDt: searchDate,
             
             itemPerPage: 5
@@ -45,10 +45,12 @@ $(document).ready(function(){
 function callback(result){
    
    $('#searchResult').empty()   //새로고침
-   
+   console.log(result)
    let list = result.boxOfficeResult.dailyBoxOfficeList
-   for(let movieof list){
-      console.log(movie)
+
+   for(let movie of list){
+      
+	   console.log(movie)
       // 순위
       let rank = movie.rank
       // 영화제목
