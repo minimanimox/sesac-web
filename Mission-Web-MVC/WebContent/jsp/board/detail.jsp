@@ -10,20 +10,6 @@
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-   //1.
-   int boardNo = Integer.parseInt(request.getParameter("no"));
-   
-   
-   //2.
-   BoardDAO dao = new BoardDAO();
-   dao.updateCnt(boardNo);
-   BoardVO board = dao.selectBoardByNo(boardNo);
-    
-   //공유영역 등록(jsp에서 el,jstl 접근하기 위해서)
-   pageContext.setAttribute("board", board);
-   
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,6 +70,17 @@
 			<tr>
 				<th width="25%">등록일</th>
 				<td>${ board.regDate }</td>
+			</tr>
+			<tr>
+				<th width="25%">첨부파일</th>
+				<td>
+					<c:forEach items="${ fileList }" var="file">
+						<a href= "${ pageContext.request.contextPath }/upload/${ file.fileSaveName }">
+						${ file.fileOriName }
+						</a>
+						(${ file.fileSize } bytes)<br>
+					</c:forEach>
+				</td>
 			</tr>
 		</table>
 		<br>

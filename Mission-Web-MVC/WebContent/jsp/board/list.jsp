@@ -29,7 +29,7 @@
    
    function doAction(boardNo){
 	   <c:choose>
-	   		<c:when test="${ not empty userVO }">
+	   		<c:when test="${ not empty userVO }"> //updateCnt먼저 갔다가 아래 주소로 가게 추가
 	   			location.href = "${ pageContext.request.contextPath }/board/detail.do?no=" + boardNo
 	   					
 			</c:when>

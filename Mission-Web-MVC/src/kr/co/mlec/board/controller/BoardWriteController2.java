@@ -1,9 +1,7 @@
 package kr.co.mlec.board.controller;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +14,7 @@ import kr.co.mlec.board.vo.BoardVO;
 import kr.co.mlec.controller.Controller;
 import kr.co.mlec.util.SesacFileNamePolicy;
 
-public class BoardWriteController implements Controller {
+public class BoardWriteController2 implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) 
@@ -44,9 +42,9 @@ public class BoardWriteController implements Controller {
 		board.setWriter(writer);
 		board.setContent(content);
 		
+		BoardService service = new BoardService();
 		//service.insertBoard(board);
 		
-		List<BoardFileVO> fileList = new ArrayList<>();
 		
 		//첨부파일 추출(file_ori_name, file_save_name, file_size) ==> tbl_board_file에 저장하는 것이 목적
 		Enumeration<String> files = multi.getFileNames();
@@ -67,9 +65,6 @@ public class BoardWriteController implements Controller {
 				fileVO.setFileSaveName(fileSaveName);
 				fileVO.setFileSize(fileSize);
 				
-				fileList.add(fileVO);
-				
-				
 			}
 			
 		}
@@ -79,8 +74,7 @@ public class BoardWriteController implements Controller {
 		//String title = request.getParameter("title");
 		//System.out.println("title: " + title);
 		
-		BoardService service = new BoardService();
-		service.insertBoard(board, fileList);   //최대 2개 fileVO자리는 list
+		
 		return "redirect:/board/list.do";
 	}
 
