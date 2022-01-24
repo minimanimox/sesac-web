@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.mlec.board.dao.BoardDAO;
 import kr.co.mlec.board.vo.BoardVO;
+import kr.co.mlec.board.vo.PagingVO;
 
 public class BoardService {
 	
@@ -18,8 +19,8 @@ public class BoardService {
 	/**
 	 * 게시글 조회 서비스
 	 */
-	public List<BoardVO> selectAllBoard() {
-		List<BoardVO> list = boardDao.selectAllBoard();
+	public List<BoardVO> selectAllBoard(PagingVO page) {
+		List<BoardVO> list = boardDao.selectAllBoard(page);
 		return list;
 	}
 	
@@ -40,5 +41,5 @@ public class BoardService {
 		boardDao.insertBoard(board);
 	}
 
-
+	
 }

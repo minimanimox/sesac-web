@@ -1,5 +1,5 @@
-<%@page import="kr.co.mlec.board.vo.BoardVO"%>
-<%@page import="kr.co.mlec.board.dao.BoardDAO"%>
+<%@page import="kr.co.mlec.board.vo.MBoardVO"%>
+<%@page import="kr.co.mlec.board.dao.MBoardDAO"%>
 <%@page import="kr.co.mlec.util.JDBCClose"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="javax.naming.spi.DirStateFactory.Result"%>
@@ -23,19 +23,18 @@
       
   --%>
 <%
-   //1.
+	//1.
    int boardNo = Integer.parseInt(request.getParameter("no"));
    //조회하기 System.out.println("boardNo" + boardNo);
    //스트링형이라서  정수를 문자열로 바꿈
    
    //2.
-   BoardDAO dao = new BoardDAO();
+   MBoardDAO dao = new MBoardDAO();
    dao.updateCnt(boardNo);
-   BoardVO board = dao.selectBoardByNo(boardNo);
+   MBoardVO board = dao.selectBoardByNo(boardNo);
     
    //공유영역 등록(jsp에서 el,jstl 접근하기 위해서)
    pageContext.setAttribute("board", board);
-   
 %>
 <!DOCTYPE html>
 <html>

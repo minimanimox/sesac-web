@@ -52,33 +52,37 @@
       <h2>게시판 목록</h2>
       <hr>
       <br>
-      <table border = "1" class="list">
-         <tr>
-            <th width="7%">번호</th>
-            <th>제목</th>
-            <th width = "16%">글쓴이</th>
-            <th width = "10%">조회수</th>
-            <th width = "20%">등록일</th>
-         </tr>
-		 
-		<c:forEach items="${ list }" var="board">
-		 <tr>
-		 	<td>${ board.no }</td>
-		 	<td>
-		 		<a href="javascript:doAction(${ board.no })">
-		 			<c:out value="${ board.title }" />
-		 		</a>
-		 		
-		 	</td>
-		 	<td>${ board.writer }</td>
-		 	<td>${ board.viewCnt }</td>
-		 	<td>${ board.regDate }</td>
-		 </tr>
-		</c:forEach>
-      </table>
-      <br>
-      <c:if test="${ not empty userVO }">
+			<table border="1" class="list">
+				<tr>
+					<th width="7%">번호</th>
+					<th>제목</th>
+					<th width="16%">글쓴이</th>
+					<th width="10%">조회수</th>
+					<th width="20%">등록일</th>
+				</tr>
 
+				<c:forEach items="${ list }" var="board">
+					<tr>
+						<td>${ board.no }</td>
+						<td><a href="javascript:doAction(${ board.no })"> 
+						<c:out value="${ board.title }" />
+						</a></td>
+						<td>${ board.writer }</td>
+						<td>${ board.viewCnt }</td>
+						<td>${ board.regDate }</td>
+					</tr>
+				</c:forEach>
+			</table>
+			<br>
+			<jsp:include page="/jsp/board/paging.jsp">
+				<jsp:param value="${paging.page}" name="page" />
+				<jsp:param value="${paging.beginPage}" name="beginPage" />
+				<jsp:param value="${paging.endPage}" name="endPage" />
+				<jsp:param value="${paging.prev}" name="prev" />
+				<jsp:param value="${paging.next}" name="next" />
+			</jsp:include>
+		<br>
+			<c:if test="${ not empty userVO }">
       <button>새글등록</button>
       </c:if>
    </div>	

@@ -31,20 +31,7 @@ public class BoardDetailController implements Controller {
 		
 		return "/jsp/board/detail.jsp";
 		
-		/*
-		 * int no = Integer.parseInt(request.getParameter("no"));
-		 * 
-		 * BoardService service = new BoardService(); //해당 게시글 + 첨부파일 조회 Object[] arr =
-		 * service.detailBoard(no);
-		 * 
-		 * BoardVO board = (BoardVO)arr[0]; List<BoardFileVO> fileList =
-		 * (List<BoardFileVO>)arr[1];
-		 * 
-		 * // 공유영역 등록 request.setAttribute("board", board);
-		 * request.setAttribute("fileList", fileList);
-		 * 
-		 * return "/jsp/board/detail.jsp";
-		 */
+		
 	}
 
 }

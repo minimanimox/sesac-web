@@ -1,24 +1,23 @@
-<%@page import="kr.co.mlec.board.dao.BoardDAO"%>
-<%@page import="kr.co.mlec.board.vo.BoardVO"%>
+<%@page import="kr.co.mlec.board.dao.MBoardDAO"%>
+<%@page import="kr.co.mlec.board.vo.MBoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    <%
-   /*
-   작업순서
-   1. 요청파라미터에서 조회할 게시물 번호 추출
-   2. 게시물 번호로 해당 게시물을 DB(tbl_board)에서 조회
-   3. form에 조회된 게시물을 출력
-   4. 
-   
-   */
-   int boardNo = Integer.parseInt(request.getParameter("no"));
-   
-   BoardDAO dao = new BoardDAO();
-   BoardVO board = dao.selectBoardByNo(boardNo);
-   
-   pageContext.setAttribute("board", board);
-   
+   	/*
+         작업순서
+         1. 요청파라미터에서 조회할 게시물 번호 추출
+         2. 게시물 번호로 해당 게시물을 DB(tbl_board)에서 조회
+         3. form에 조회된 게시물을 출력
+         4. 
+         
+         */
+         int boardNo = Integer.parseInt(request.getParameter("no"));
+         
+         MBoardDAO dao = new MBoardDAO();
+         MBoardVO board = dao.selectBoardByNo(boardNo);
+         
+         pageContext.setAttribute("board", board);
    %>
 <!DOCTYPE html>
 <html>

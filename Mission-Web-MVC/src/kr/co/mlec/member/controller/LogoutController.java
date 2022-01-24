@@ -10,8 +10,6 @@ public class LogoutController implements Controller {
 
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		
-		
 		HttpSession session = request.getSession();
 		session.invalidate();
 		

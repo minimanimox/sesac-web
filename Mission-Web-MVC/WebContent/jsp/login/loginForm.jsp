@@ -37,7 +37,8 @@
 			<h2>로그인</h2>
 			<hr>
 			<form name="loginForm" method="post" 
-				action="${ pageContext.request.contextPath }/loginProcess.do" onsubmit="return checkForm()">
+				action="${ pageContext.request.contextPath }/loginProcess.do" 
+				onsubmit="return checkForm()">
 				<table>
 					<tr>
 						<th>ID</th>

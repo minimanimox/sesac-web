@@ -5,8 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.mlec.board.dao.BoardDAO;
 import kr.co.mlec.board.service.BoardService;
 import kr.co.mlec.board.vo.BoardVO;
+import kr.co.mlec.board.vo.PagingVO;
 import kr.co.mlec.controller.Controller;
 
 // board/list.do(전체리스트조회) 호출되었을 때
@@ -17,15 +19,28 @@ import kr.co.mlec.controller.Controller;
 public class BoardListController implements Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) 
-			throws Exception {
-		
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
 		BoardService service = new BoardService();
-		List<BoardVO> list = service.selectAllBoard();
+		BoardDAO dao = new BoardDAO();
+		PagingVO paging = new PagingVO();
 		
-		request.setAttribute("list", list);
+		List<BoardVO> list = service.selectAllBoard(paging);
+
+		int page = 1;
+
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
 		
-		return "/jsp/board/list.jsp";
+		int count = dao.getAllCount();
+		paging.setTotalCount(count);
+		paging.setPage(page);
+		
+        request.setAttribute("list", list);
+        request.setAttribute("paging", paging);
+        
+        return "/jsp/board/list.jsp?page="+page;
 	}
 
 }

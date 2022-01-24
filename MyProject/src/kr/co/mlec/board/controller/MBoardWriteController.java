@@ -1,20 +1,20 @@
 package kr.co.mlec.board.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-
-import kr.co.mlec.board.service.BoardService;
-import kr.co.mlec.board.vo.BoardFileVO;
-import kr.co.mlec.board.vo.BoardVO;
+import kr.co.mlec.board.service.MBoardService;
+import kr.co.mlec.board.vo.MBoardFileVO;
+import kr.co.mlec.board.vo.MBoardVO;
 import kr.co.mlec.controller.Controller;
 import kr.co.mlec.util.SesacFileNamePolicy;
 
-public class BoardWriteController2 implements Controller {
+public class MBoardWriteController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) 
@@ -22,7 +22,7 @@ public class BoardWriteController2 implements Controller {
 		
 		request.setCharacterEncoding("utf-8");
 		
-		String saveFolder = "D:\\web-workspace\\Mission-Web-MVC\\WebContent\\upload";
+		String saveFolder = "C:\\Users\\win10\\Documents\\sesac-web\\Mission-Web-MVC\\WebContent\\upload";
 		
 		MultipartRequest multi = new MultipartRequest(request, 
 														saveFolder,  //저장위치
@@ -37,14 +37,14 @@ public class BoardWriteController2 implements Controller {
 		String writer = multi.getParameter("writer");
 		String content = multi.getParameter("content");
 		
-		BoardVO board = new BoardVO();
+		MBoardVO board = new MBoardVO();
 		board.setTitle(title);
 		board.setWriter(writer);
 		board.setContent(content);
 		
-		BoardService service = new BoardService();
 		//service.insertBoard(board);
 		
+		List<MBoardFileVO> fileList = new ArrayList<>();
 		
 		//첨부파일 추출(file_ori_name, file_save_name, file_size) ==> tbl_board_file에 저장하는 것이 목적
 		Enumeration<String> files = multi.getFileNames();
@@ -60,10 +60,13 @@ public class BoardWriteController2 implements Controller {
 				String fileSaveName = multi.getFilesystemName(fileName);
 				int fileSize = (int)file.length();
 				
-				BoardFileVO fileVO = new BoardFileVO();
+				MBoardFileVO fileVO = new MBoardFileVO();
 				fileVO.setFileOriName(fileOriName);
 				fileVO.setFileSaveName(fileSaveName);
 				fileVO.setFileSize(fileSize);
+				
+				fileList.add(fileVO);
+				
 				
 			}
 			
@@ -74,7 +77,8 @@ public class BoardWriteController2 implements Controller {
 		//String title = request.getParameter("title");
 		//System.out.println("title: " + title);
 		
-		
+		MBoardService service = new MBoardService();
+		service.insertBoard(board, fileList);   //최대 2개 fileVO자리는 list
 		return "redirect:/board/list.do";
 	}
 

@@ -1,5 +1,5 @@
-<%@page import="kr.co.mlec.board.vo.BoardVO"%>
-<%@page import="kr.co.mlec.board.dao.BoardDAO"%>
+<%@page import="kr.co.mlec.board.vo.MBoardVO"%>
+<%@page import="kr.co.mlec.board.dao.MBoardDAO"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -17,16 +17,14 @@
  	String writer= request.getParameter("writer");
 	String content = request.getParameter("content");
  	
- 	BoardVO board = new BoardVO();
+ 	MBoardVO board = new MBoardVO();
  	board.setTitle(title);
  	board.setWriter(writer);
  	board.setContent(content);
  	
     //데이터베이스 tbl_board 테이블에 새글등록
-    BoardDAO dao = new BoardDAO();
+    MBoardDAO dao = new MBoardDAO();
     dao.insertBoard(board);
- 
- 
 %>
 
 <script>

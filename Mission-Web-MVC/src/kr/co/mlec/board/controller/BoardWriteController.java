@@ -24,7 +24,7 @@ public class BoardWriteController implements Controller {
 		
 		request.setCharacterEncoding("utf-8");
 		
-		String saveFolder = "D:\\web-workspace\\Mission-Web-MVC\\WebContent\\upload";
+		String saveFolder = "C:\\Users\\win10\\Documents\\sesac-web\\Mission-Web-MVC\\WebContent\\upload";
 		
 		MultipartRequest multi = new MultipartRequest(request, 
 														saveFolder,  //저장위치

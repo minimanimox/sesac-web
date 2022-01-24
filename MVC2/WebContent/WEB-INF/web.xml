@@ -7,7 +7,7 @@
   	<servlet-class>kr.co.mlec.controller.DispatcherServlet</servlet-class>
   	<init-param>
   		<param-name>propLocation</param-name>
-  		<param-value>D:\\web-workspace\\Mission-Web-MVC\\bean.properties</param-value>
+  		<param-value>C:\Users\win10\Documents\sesac-web\MVC2\bean.properties</param-value>
   	</init-param>
   </servlet>
   <servlet-mapping>

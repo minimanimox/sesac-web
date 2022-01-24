@@ -77,6 +77,14 @@
 		</c:forEach>
       </table>
       <br>
+	  <jsp:include page="/jsp/board/paging.jsp">
+	  	  <jsp:param value="${paging.page}" name="page" />
+	  	  <jsp:param value="${paging.beginPage}" name="beginPage" />
+	  	  <jsp:param value="${paging.endPage}" name="endPage" />
+	  	  <jsp:param value="${paging.prev}" name="prev" />
+	  	  <jsp:param value="${paging.next}" name="next" />
+	  </jsp:include>
+	  <br>
       <c:if test="${ not empty userVO }">
 
       <button>새글등록</button>

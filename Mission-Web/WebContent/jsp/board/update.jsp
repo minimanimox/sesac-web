@@ -1,5 +1,5 @@
-<%@page import="kr.co.mlec.board.dao.BoardDAO"%>
-<%@page import="kr.co.mlec.board.vo.BoardVO"%>
+<%@page import="kr.co.mlec.board.dao.MBoardDAO"%>
+<%@page import="kr.co.mlec.board.vo.MBoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -12,13 +12,13 @@
 	String content = request.getParameter("content");
 	int no = Integer.parseInt(request.getParameter("no"));
 	
-	BoardVO board = new BoardVO();
+	MBoardVO board = new MBoardVO();
 	board.setTitle(title);
 	board.setWriter(writer);
 	board.setContent(content);
 	board.setNo(no);
 	
-	BoardDAO dao = new BoardDAO();
+	MBoardDAO dao = new MBoardDAO();
 	dao.updateBoard(board);
 %>
 

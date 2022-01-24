@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.mlec.board.vo.BoardVO;
+import kr.co.mlec.board.vo.PagingVO;
 import kr.co.mlec.util.ConnectionFactory;
 import kr.co.mlec.util.JDBCClose;
 /**
@@ -21,23 +22,34 @@ import kr.co.mlec.util.JDBCClose;
 public class BoardDAO {
 
 	/**
-	 * 전체 게시글 조회
+	 * 전체 게시글 조회 (페이징 추가)
 	 */
-	public List<BoardVO> selectAllBoard() {
+	public List<BoardVO> selectAllBoard(PagingVO paging) {
+		
+		//int startNum = (page-1)*10+1;
+		//int endNum = page*10;
+		   
+		int startNum = paging.getStartNum();
+		int endNum = paging.getEndNum();
 		
 		List<BoardVO> list = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
+				
 		try {
 		   conn = new ConnectionFactory().getConnection();
 		   StringBuilder sql = new StringBuilder();
-		   sql.append("select no, title, writer, view_cnt, to_char(reg_date, 'yyyy-mm-dd') as reg_date ");
-		   sql.append(" from tbl_board ");
-		   sql.append(" order by no desc ");
-		   pstmt = conn.prepareStatement(sql.toString());
-		   ResultSet rs = pstmt.executeQuery();
+		   sql.append(" SELECT * FROM (SELECT * FROM (SELECT ROWNUM row_num ");
+		   sql.append(" , tbl_board.* FROM tbl_board) WHERE row_num >= ?) ");
+		   sql.append(" WHERE row_num <= ? "); 
+		   sql.append(" ORDER by no desc ");
 		   
+		   
+		   pstmt = conn.prepareStatement(sql.toString());
+		   pstmt.setInt(1, startNum);
+           pstmt.setInt(2, endNum);
+           ResultSet rs = pstmt.executeQuery();
+
 		   while(rs.next()) {
 			   int no = rs.getInt("no");
 			   String title = rs.getString("title");
@@ -45,8 +57,7 @@ public class BoardDAO {
 			   int viewCnt = rs.getInt("view_cnt");
 			   String regDate = rs.getString("reg_date");
 			   BoardVO board = new BoardVO(no, title, writer, viewCnt, regDate);
-			 //  System.out.println(board);
-			   
+						   
 			   list.add(board);
 		   } }
 		   catch(Exception e) {
@@ -186,5 +197,34 @@ public void updateCnt(int boardNo) {
     }
     
 }
-}
+    /**
+     * 페이징
+     */
     
+public int getAllCount() {
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	
+	int count = 0;
+	
+	try {
+		conn = new ConnectionFactory().getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT COUNT(*) as count FROM tbl_board ");
+
+		pstmt = conn.prepareStatement(sql.toString());
+		ResultSet rs = pstmt.executeQuery();
+
+		if (rs.next()) {
+			count = rs.getInt("count");
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		JDBCClose.close(pstmt, conn);
+	}
+
+	return count;
+}
+}
